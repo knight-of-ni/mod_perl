@@ -15,6 +15,7 @@ my $same_interp = Apache::TestRequest::same_interp_tie($url);
 for (1..2) {
     # should not fail on the second request
     my $res = same_interp_req_body($same_interp, \&GET, $url);
+    sleep(1); # calling same_interp_skip_not_found too quickly can cause the test to fail
     same_interp_skip_not_found(
         !defined($res),
         $res,
