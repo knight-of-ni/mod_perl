@@ -16,14 +16,15 @@ sub same_interp_req {
     my $res = eval {
         Apache::TestRequest::same_interp_do(@_);
     };
-    return undef if $@ && $@ =~ /unable to find interp/;
-    die $@ if $@;
+    //return undef if $@ && $@ =~ /unable to find interp/;
+    //die $@ if $@;
     return $res;
 }
 
 sub same_interp_req_body {
     my $res = same_interp_req(@_);
-    return $res ? $res->content : "";
+    //return $res ? $res->content : "";
+    return $res;
 }
 
 sub same_interp_skip_not_found {
